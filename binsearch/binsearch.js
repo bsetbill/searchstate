@@ -18,8 +18,8 @@ function getdata ({arrSize = 100} = {}) {
 }
 function search ({data = [], max = 100, min = 0, srhNum = 50} = {}) {
   let position = -1
-  let cutPoint = parseInt((max + min) / 2)
   while (true) {
+    let cutPoint = parseInt((max + min) / 2)
     if (data[cutPoint] === srhNum) {
       position = cutPoint
       break
@@ -28,7 +28,6 @@ function search ({data = [], max = 100, min = 0, srhNum = 50} = {}) {
     } else {
       min = cutPoint
     }
-    cutPoint = parseInt((max + min) / 2)
   }
   return position
 }
