@@ -18,17 +18,17 @@ function getdata ({arrSize = 100} = {}) {
 }
 function search ({data = [], max = 100, min = 0, srhNum = 50} = {}) {
   let position = -1
-  let cutpoint = parseInt((max + min) / 2)
+  let cutPoint = parseInt((max + min) / 2)
   while (true) {
-    if (data[cutpoint] === srhNum) {
-      position = cutpoint
+    if (data[cutPoint] === srhNum) {
+      position = cutPoint
       break
-    } else if (data[cutpoint] > srhNum) {
-      max = cutpoint
+    } else if (data[cutPoint] > srhNum) {
+      max = cutPoint
     } else {
-      min = cutpoint
+      min = cutPoint
     }
-    cutpoint = parseInt((max + min) / 2)
+    cutPoint = parseInt((max + min) / 2)
   }
   return position
 }
