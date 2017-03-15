@@ -2,8 +2,10 @@ function main () {
   let tree = new binaryTree()
   const MAX = 100
   const MIN = 0
-  tree.insert({max: MAX, min: MIN})
-  console.log(tree.search(50))
+  const TREESIZE = 100
+  tree.insert({max: MAX, min: MIN, treeSize: TREESIZE})
+  let result = tree.search(50)
+  console.log(result)
 }
 function binaryTree () {
   const NODE = function (key) {
@@ -27,8 +29,8 @@ function binaryTree () {
       return 0
     }
   }
-  this.insert = function ({max = 100, min = 0} = {}) {
-    for (let i = 0; i < max; i++) {
+  this.insert = function ({max = 100, min = 0, treeSize = 100} = {}) {
+    for (let i = 0; i < treeSize; i++) {
       let key = Math.floor(Math.random() * (max - min + 1)) + min
       let newNode = new NODE(key)
       if (root === null) {
