@@ -1,20 +1,11 @@
-function main () {
-  let tree = new binaryTree()
-  const MAX = 100
-  const MIN = 0
-  const TREESIZE = 100
-  tree.insert({max: MAX, min: MIN, treeSize: TREESIZE})
-  let result = tree.search(50)
-  console.log(result)
-}
-function binaryTree () {
+function BinaryTree () {
   const NODE = function (key) {
     this.key = key
     this.left = null
     this.right = null
   }
   let root = null
-  this.search = function (key) {
+  this.search = function ({key = 50} = {}) {
     return searchNode(root, key)
   }
   const searchNode = function (node, key) {
@@ -29,15 +20,18 @@ function binaryTree () {
       return 0
     }
   }
-  this.insert = function ({max = 100, min = 0, treeSize = 100} = {}) {
+  this.getTree = function ({max = 100, min = 0, treeSize = 100} = {}) {
     for (let i = 0; i < treeSize; i++) {
-      let key = Math.floor(Math.random() * (max - min + 1)) + min
-      let newNode = new NODE(key)
-      if (root === null) {
-        root = newNode
-      } else {
-        insertNode(root, newNode)
-      }
+      const key = Math.floor(Math.random() * (max - min + 1)) + min
+      insert(key)
+    }
+  }
+  const insert = function (key) {
+    let newNode = new NODE(key)
+    if (root === null) {
+      root = newNode
+    } else {
+      insertNode(root, newNode)
     }
   }
   const insertNode = function (node, newNode) {
@@ -56,4 +50,4 @@ function binaryTree () {
     }
   }
 }
-main()
+exports.BinaryTree = BinaryTree
