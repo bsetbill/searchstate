@@ -1,35 +1,19 @@
-function main () {
-  const ARRSIZE = 100
-  const MAX = 100
-  const MIN = 0
-  const SRHNUM = 50
-  let data = []
-  let result = 0
-  data = getdata({arrSize: ARRSIZE})
-  result = search({data: data, max: MAX, min: MIN, srhNum: SRHNUM})
-  console.log(result)
-}
-function getdata ({arrSize = 100} = {}) {
-  let data = []
-  for (let i = 0; i < arrSize; i++) {
-    data[i] = i + 1
-  }
-  return data
-}
-function search ({data = [], max = 100, min = 0, srhNum = 50} = {}) {
+function search ({data = [], max = 100, min = 0, searhNum = 50} = {}) {
   let position = -1
   while (true) {
-    let cutPoint = parseInt((max + min) / 2)
-    if (data[cutPoint] === srhNum) {
+    const cutPoint = parseInt((max + min) / 2)
+    if (data[cutPoint] === searhNum) {
       position = cutPoint
       break
-    } else if (data[cutPoint] > srhNum) {
+    } else if (data[cutPoint] > searhNum) {
       max = cutPoint
     } else {
       min = cutPoint
     }
+    if (max === min || max === min + 1) {
+      break
+    }
   }
   return position
 }
-
-main()
+exports.search = search
