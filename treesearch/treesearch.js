@@ -20,9 +20,9 @@ function BinaryTree () {
       return 0
     }
   }
-  this.getTree = function ({max = 100, min = 0, treeSize = 100} = {}) {
-    for (let i = 0; i < treeSize; i++) {
-      const key = Math.floor(Math.random() * (max - min + 1)) + min
+  this.getTree = function ({max = 100, min = 0, data = []} = {}) {
+    for (let i = 0; i < data.length; i++) {
+      const key = data[i]
       insert(key)
     }
   }
